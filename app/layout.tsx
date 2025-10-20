@@ -4,7 +4,7 @@ import { GeistMono } from 'geist/font/mono'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Yugan Kavinda - DevOps Engineer & QA Specialist',
+  title: 'Theekshana Yugan Kavinda',
   description: 'DevOps Engineer & QA Specialist passionate about building robust CI/CD pipelines, ensuring quality in software and AI/ML models, and contributing to open source.',
   icons: {
     icon: '/favicon.ico',
