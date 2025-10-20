@@ -4,10 +4,10 @@ import { Github, Linkedin, Twitter, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const socials = [
-  { icon: Github, label: "GitHub", href: "https://github.com/yugankavinda" },
-  { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/yugankavinda" },
+  { icon: Github, label: "GitHub", href: "https://github.com/BlockAce01" },
+  { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/theekshana-yugan/" },
   { icon: Twitter, label: "Twitter", href: "https://twitter.com/yugankavinda" },
-  { icon: Mail, label: "Email", href: "mailto:yugan@example.com" },
+  { icon: Mail, label: "Email", href: "mailto:yugankavinda@gmail.com" },
 ]
 
 export default function ContactSection() {
