@@ -4,11 +4,8 @@ import { Canvas } from "@react-three/fiber"
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import { Button } from "@/components/ui/button"
 import DragonInfinity from "./dragon-infinity"
-import { useTheme } from "./theme-provider"
 
 export default function HeroSection() {
-  const { theme } = useTheme()
-
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
   }
@@ -23,7 +20,7 @@ export default function HeroSection() {
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} intensity={1} />
               <pointLight position={[-10, -10, -10]} intensity={0.5} color="#ff6b6b" />
-              <DragonInfinity isDark={theme === "dark"} />
+              <DragonInfinity isDark={true} />
               <OrbitControls
                 enableZoom={false}
                 enablePan={false}

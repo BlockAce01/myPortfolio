@@ -1,13 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Moon, Sun, ExternalLink } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { useTheme } from "./theme-provider"
+import { ExternalLink } from "lucide-react"
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
-  const { theme, toggleTheme } = useTheme()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50)
@@ -74,10 +71,6 @@ export default function Header() {
             <ExternalLink className="w-3 h-3" />
           </a>
         </nav>
-
-        <Button variant="ghost" size="icon" onClick={toggleTheme} className="rounded-full">
-          {theme === "light" ? <Moon className="w-5 h-5" /> : <Sun className="w-5 h-5" />}
-        </Button>
       </div>
     </header>
   )
