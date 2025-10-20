@@ -11,10 +11,10 @@ export default function HeroSection() {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-20">
+    <section id="home" className="min-h-screen flex items-center pt-20 relative z-40">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="h-[500px] lg:h-[600px] relative">
+          <div className="h-[400px] sm:h-[500px] lg:h-[600px] relative">
             <Canvas>
               <PerspectiveCamera makeDefault position={[0, 0, 8]} />
               <ambientLight intensity={0.5} />
