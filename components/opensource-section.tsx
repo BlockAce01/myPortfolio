@@ -160,7 +160,7 @@ export default function OpenSourceSection() {
                 ML infrastructure.
               </p>
               <Button size="lg" asChild>
-                <a href="https://github.com/yugankavinda" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/BlockAce01" target="_blank" rel="noopener noreferrer">
                   <Github className="w-5 h-5 mr-2" />
                   Follow on GitHub
                 </a>
