@@ -138,7 +138,7 @@ export default function HeroSection() {
               >
                 View My Work
               </Button>
-              <Button size="lg" variant="outline" onClick={() => scrollToSection("contact")}>
+              <Button size="lg" variant="outline" className="hover:text-[var(--color-devops-deploy)]">
                 Get In Touch
               </Button>
             </div>

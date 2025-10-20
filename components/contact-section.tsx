@@ -22,19 +22,27 @@ export default function ContactSection() {
           </p>
 
           <div className="flex flex-wrap justify-center gap-4">
-            {socials.map((social, index) => (
-              <Button
-                key={index}
-                variant="outline"
-                size="lg"
-                className="hover:scale-110 transition-transform bg-transparent hover:bg-primary"
-                asChild
-              >
-                <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
-                  <social.icon className="w-6 h-6" />
-                </a>
-              </Button>
-            ))}
+            {socials.map((social, index) => {
+              const colors = [
+                'hover:text-[var(--color-devops-qa)] hover:bg-[var(--color-devops-qa)]/10',
+                'hover:text-[var(--color-devops-deploy)] hover:bg-[var(--color-devops-deploy)]/10',
+                'hover:text-[var(--color-devops-flow)] hover:bg-[var(--color-devops-flow)]/10',
+                'hover:text-accent hover:bg-accent/10'
+              ]
+              return (
+                <Button
+                  key={index}
+                  variant="outline"
+                  size="lg"
+                  className={`hover:scale-110 transition-all duration-300 bg-transparent border-2 ${colors[index]}`}
+                  asChild
+                >
+                  <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
+                    <social.icon className="w-6 h-6" />
+                  </a>
+                </Button>
+              )
+            })}
           </div>
         </div>
       </div>

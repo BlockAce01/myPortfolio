@@ -33,25 +33,25 @@ export default function Header() {
         <nav className="hidden md:flex items-center gap-8">
           <button
             onClick={() => scrollToSection("about")}
-            className="text-sm font-medium hover:text-primary transition-colors"
+            className="text-sm font-medium hover:text-[var(--color-devops-qa)] transition-colors"
           >
             About
           </button>
           <button
             onClick={() => scrollToSection("devops")}
-            className="text-sm font-medium hover:text-primary transition-colors"
+            className="text-sm font-medium hover:text-[var(--color-devops-deploy)] transition-colors"
           >
             DevOps
           </button>
           <button
             onClick={() => scrollToSection("opensource")}
-            className="text-sm font-medium hover:text-primary transition-colors"
+            className="text-sm font-medium hover:text-[var(--color-devops-flow)] transition-colors"
           >
             Open Source
           </button>
           <button
             onClick={() => scrollToSection("projects")}
-            className="text-sm font-medium hover:text-primary transition-colors"
+            className="text-sm font-medium hover:text-accent transition-colors"
           >
             Projects
           </button>
@@ -65,7 +65,7 @@ export default function Header() {
             href="https://blog.yugankavinda.me"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium hover:text-primary transition-colors flex items-center gap-1"
+            className="text-sm font-medium hover:text-[var(--color-chart-2)] transition-colors flex items-center gap-1"
           >
             Blog
             <ExternalLink className="w-3 h-3" />

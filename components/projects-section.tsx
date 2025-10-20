@@ -112,7 +112,7 @@ export default function ProjectsSection() {
                     Live Demo
                   </a>
                 </Button>
-                <Button variant="outline" size="sm" className="hover:bg-primary" asChild>
+                <Button variant="outline" size="sm" className="hover:bg-primary hover:text-[var(--color-devops-qa)]" asChild>
                   <a href={project.source} target="_blank" rel="noopener noreferrer">
                     <Github className="w-4 h-4 mr-2" />
                     Source Code

@@ -165,12 +165,9 @@ body::before {
     background-image: radial-gradient(circle, oklch(0.3 0.02 260) 1px, transparent 1px);
   }
 
-  /* Dark mode button hover effects */
-  .dark button:hover {
-    background-color: oklch(0.7 0.22 240) !important;
-  }
-
-  .dark .hover\:bg-primary:hover {
-    background-color: oklch(0.7 0.22 240) !important;
+  /* Dark mode navigation button hover effects */
+  .dark nav button:hover,
+  .dark nav a:hover {
+    background-color: transparent !important;
   }
 }
