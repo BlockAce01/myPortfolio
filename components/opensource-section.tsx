@@ -8,58 +8,13 @@ import { Github, Star, ExternalLink } from "lucide-react"
 
 const contributions = [
   {
-    name: "kubernetes/kubernetes",
-    description: "Production-Grade Container Orchestration",
+    name: "maurodesouza/profile-readme-generator",
+    description: "A famouse Readme generator",
     role: "Contributor",
-    contributions: "Bug fixes in scheduler, documentation improvements",
+    contributions: "Toggle button for social media icons and Tech tools",
     stars: "110k",
-    language: "Go",
-    tags: ["DevOps", "Cloud Native", "Orchestration"],
-  },
-  {
-    name: "pytest-dev/pytest",
-    description: "The pytest framework makes it easy to write tests",
-    role: "Contributor",
-    contributions: "Added new assertion helpers, improved test fixtures",
-    stars: "12k",
-    language: "Python",
-    tags: ["Testing", "QA", "Python"],
-  },
-  {
-    name: "mlflow/mlflow",
-    description: "Open source platform for ML lifecycle",
-    role: "Contributor",
-    contributions: "Model deployment improvements, CI/CD integration",
-    stars: "18k",
-    language: "Python",
-    tags: ["MLOps", "AI/ML", "Deployment"],
-  },
-  {
-    name: "grafana/grafana",
-    description: "The open observability platform",
-    role: "Contributor",
-    contributions: "Dashboard templates, monitoring plugins",
-    stars: "64k",
     language: "TypeScript",
-    tags: ["Monitoring", "DevOps", "Observability"],
-  },
-  {
-    name: "jenkinsci/jenkins",
-    description: "Leading open source automation server",
-    role: "Plugin Developer",
-    contributions: "Created custom pipeline plugins for QA automation",
-    stars: "23k",
-    language: "Java",
-    tags: ["CI/CD", "Automation", "DevOps"],
-  },
-  {
-    name: "terraform-providers/terraform",
-    description: "Infrastructure as Code tool",
-    role: "Contributor",
-    contributions: "Provider improvements, documentation",
-    stars: "42k",
-    language: "Go",
-    tags: ["IaC", "DevOps", "Cloud"],
+    tags: ["Frontend", "QA mindset"],
   },
 ]
 
@@ -118,7 +73,7 @@ export default function OpenSourceSection() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
           {stats.map((stat, index) => (
             <Card
               key={index}
@@ -135,10 +90,10 @@ export default function OpenSourceSection() {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </div> */}
 
         {/* Contributions Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="flex flex-wrap justify-center gap-6">
           {contributions.map((project, index) => (
             <Card
               key={index}
@@ -185,7 +140,7 @@ export default function OpenSourceSection() {
                   className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors"
                   asChild
                 >
-                  <a href={`https://github.com/${project.name}`} target="_blank" rel="noopener noreferrer">
+                  <a href={`https://github.com/maurodesouza/profile-readme-generator/pull/155`} target="_blank" rel="noopener noreferrer">
                     View on GitHub
                     <ExternalLink className="w-4 h-4 ml-2" />
                   </a>
