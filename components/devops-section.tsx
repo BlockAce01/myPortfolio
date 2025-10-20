@@ -139,12 +139,12 @@ export default function DevOpsSection() {
 
         {/* Software DevOps Cycle */}
         <div className="mb-16">
-          <div className="flex items-center justify-center gap-3 mb-8">
+          {/* <div className="flex items-center justify-center gap-3 mb-8">
             <h3 className="text-2xl font-bold">Software DevOps</h3>
             <Badge variant="secondary" className="text-sm">
               Traditional Pipeline
             </Badge>
-          </div>
+          </div> */}
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {devopsStages.map((stage, index) => (
