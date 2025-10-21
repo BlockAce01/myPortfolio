@@ -58,7 +58,7 @@ export default function OpenSourceSection() {
           }`}
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <Github className="w-10 h-10 text-primary" />
+            <Github className="w-10 h-10 text-primary hidden md:block" />
             <h2 className="text-4xl lg:text-5xl font-bold text-balance">
               Open Source{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">

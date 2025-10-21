@@ -56,7 +56,7 @@ export default function EducationSection() {
           }`}
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <GraduationCap className="w-10 h-10 text-primary" />
+            <GraduationCap className="w-10 h-10 text-primary hidden md:block" />
             <h2 className="text-4xl lg:text-5xl font-bold text-balance">Education</h2>
           </div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
