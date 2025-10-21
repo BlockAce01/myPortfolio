@@ -95,7 +95,7 @@ export default function ProjectsSection() {
         >
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-balance">My Projects</h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-            A selection of DevOps and QA automation projects I've built
+            A selection of DevOps, QA automation projects and Full-stack applications I've built
           </p>
         </div>
 

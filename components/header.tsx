@@ -56,6 +56,12 @@ export default function Header() {
             Projects
           </button>
           <button
+            onClick={() => scrollToSection("certifications")}
+            className="text-sm font-medium hover:text-[var(--color-chart-3)] transition-colors"
+          >
+            Certifications
+          </button>
+          <button
             onClick={() => scrollToSection("contact")}
             className="text-sm font-medium hover:text-primary transition-colors"
           >
