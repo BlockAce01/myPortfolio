@@ -20,9 +20,14 @@ export default function ContactSection() {
     <section id="contact" className="py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-balance">Contact Me</h2>
-          <p className="text-xl text-muted-foreground mb-12 text-pretty">
-            I'm always open to discussing DevOps, QA automation & AI/ML
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-balance bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent relative">
+            Contact Me
+          </h2>
+          <p className="text-xl text-muted-foreground mb-12 text-pretty leading-relaxed max-w-xl mx-auto">
+            I'm always open to discussing{" "}
+            <span className="font-semibold text-primary">DevOps</span>,{" "}
+            <span className="font-semibold text-primary">QA automation</span> &{" "}
+            <span className="font-semibold text-primary">AI/ML</span>{" "}
             opportunities.
           </p>
 
