@@ -119,7 +119,7 @@ export default function HeroSection() {
 
           {/* Content */}
           <div className="space-y-6">
-            <h1 className="text-5xl lg:text-6xl font-bold leading-tight text-balance">
+            <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-balance min-h-[90px] mb-4">
               Hi, I'm{" "}
               <span className="bg-gradient-to-r from-primary via-[var(--color-devops-flow)] to-accent bg-clip-text text-transparent">
                 {displayedText}
