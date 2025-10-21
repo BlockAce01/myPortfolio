@@ -37,7 +37,7 @@ export default function AboutSection() {
   }, [])
 
   return (
-    <section id="about" ref={sectionRef} className="py-20 relative">
+    <section id="about" ref={sectionRef} className="py-12 md:py-20 relative">
       <div className="container mx-auto px-4">
         <div
           className={`text-center mb-12 transition-all duration-700 ${
@@ -52,7 +52,7 @@ export default function AboutSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-6">
           {skills.map((skill, index) => (
             <Card
               key={index}
@@ -61,9 +61,9 @@ export default function AboutSection() {
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <CardContent className="p-6 text-center">
-                <skill.icon className="w-12 h-12 mx-auto mb-4 text-primary" />
-                <h3 className="font-semibold">{skill.name}</h3>
+              <CardContent className="p-1 md:p-6 text-center">
+                <skill.icon className="w-6 h-6 md:w-12 md:h-12 mx-auto mb-4 text-primary" />
+                <h3 className="text-sm md:text-base font-semibold">{skill.name}</h3>
               </CardContent>
             </Card>
           ))}
