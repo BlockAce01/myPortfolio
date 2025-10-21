@@ -25,7 +25,7 @@ export default function HeroSection() {
 
   // Animated titles that cycle through
   const titles = [
-    "Yugan Kavinda",
+    "Theekshana Yugan Kavinda",
     "a QA Engineer",
     "a DevOps Engineer", 
     "an AI/ML Enthusiast"
@@ -65,7 +65,7 @@ export default function HeroSection() {
                 return 0
               }
             })
-          }, 40)
+          }, 20)
         }
       } else {
         // Finished typing, wait before starting to delete
