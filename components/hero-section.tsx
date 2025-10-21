@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber"
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import { Button } from "@/components/ui/button"
 import DragonInfinity from "./dragon-infinity"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function HeroSection() {
   const controlsRef = useRef<any>(null)
@@ -13,6 +14,7 @@ export default function HeroSection() {
   const [displayedText, setDisplayedText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
   const [charIndex, setCharIndex] = useState(0)
+  const isMobile = useIsMobile()
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
@@ -98,6 +100,7 @@ export default function HeroSection() {
                 ref={controlsRef}
                 enableZoom={false}
                 enablePan={false}
+                enableRotate={!isMobile}
                 minPolarAngle={Math.PI / 3}
                 maxPolarAngle={Math.PI / 1.5}
                 enableDamping={true}

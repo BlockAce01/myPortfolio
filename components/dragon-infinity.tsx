@@ -183,15 +183,15 @@ export default function DragonInfinity({ isDark }: DragonInfinityProps) {
         const angle = timeRef.current * tech.speed + tech.offset
         
         // Reduce distance for smaller screens instead of scaling down
-        const distanceMultiplier = isMobile ? 0.7 : isTablet ? 0.85 : 1.0
+        const distanceMultiplier = isMobile ? 0.6 : isTablet ? 0.85 : 1.0
         
         // Scale orbit to use full container boundary
         const x = isMobile 
-          ? Math.cos(angle) * tech.radius * 0.8 // Mobile: more horizontal spread
+          ? Math.cos(angle) * tech.radius * 0.7 // Mobile: more horizontal spread
           : Math.cos(angle) * tech.radius * distanceMultiplier
         const z = isMobile ? 0 : Math.sin(angle) * tech.radius * distanceMultiplier
         const y = isMobile 
-          ? Math.sin(angle) * tech.radius * 1.0 // Mobile: use full vertical space
+          ? Math.sin(angle) * tech.radius * 0.8 // Mobile: use full vertical space
           : tech.verticalOffset + Math.sin(timeRef.current * 0.5 + index) * 0.5
 
         return (
