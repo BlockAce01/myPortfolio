@@ -1,10 +1,11 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { ExternalLink } from "lucide-react"
+import { ExternalLink, Menu, X } from "lucide-react"
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,6 +108,82 @@ export default function Header() {
             <ExternalLink className="w-3 h-3" />
           </a>
         </nav>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 rounded-md hover:bg-accent transition-colors"
+          aria-label="Toggle mobile menu"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border shadow-lg transition-all duration-300 ease-out ${
+            mobileMenuOpen
+              ? 'opacity-100 translate-y-0 scale-100'
+              : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'
+          }`}
+        >
+          <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
+            <button
+              onClick={() => {
+                scrollToSection("about")
+                setMobileMenuOpen(false)
+              }}
+              className="text-sm font-medium hover:text-[var(--color-devops-qa)] transition-colors text-left"
+            >
+              About
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection("opensource")
+                setMobileMenuOpen(false)
+              }}
+              className="text-sm font-medium hover:text-[var(--color-devops-flow)] transition-colors text-left"
+            >
+              Open Source
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection("projects")
+                setMobileMenuOpen(false)
+              }}
+              className="text-sm font-medium hover:text-accent transition-colors text-left"
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection("certifications")
+                setMobileMenuOpen(false)
+              }}
+              className="text-sm font-medium hover:text-[var(--color-chart-3)] transition-colors text-left"
+            >
+              Certifications
+            </button>
+            <button
+              onClick={() => {
+                scrollToSection("contact")
+                setMobileMenuOpen(false)
+              }}
+              className="text-sm font-medium hover:text-primary transition-colors text-left"
+            >
+              Contact
+            </button>
+            <a
+              href="https://blog.yugankavinda.me"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium hover:text-[var(--color-chart-2)] transition-colors flex items-center gap-1"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Blog
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </nav>
+        </div>
       </div>
     </header>
   )
