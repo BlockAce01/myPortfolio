@@ -88,9 +88,12 @@ const certifications = [
 
 export default function CertificationsSection() {
   const [isVisible, setIsVisible] = useState(false)
-  const [currentIndices, setCurrentIndices] = useState([0, 1, 2, 3])
-  const [nextIndices, setNextIndices] = useState([4, 5, 6, 7])
-  const [isFlipping, setIsFlipping] = useState([false, false, false, false])
+  const [cardStates, setCardStates] = useState([
+    { frontIndex: 0, backIndex: 4, isFlipped: false },
+    { frontIndex: 1, backIndex: 5, isFlipped: false },
+    { frontIndex: 2, backIndex: 6, isFlipped: false },
+    { frontIndex: 3, backIndex: 7, isFlipped: false },
+  ])
   const [isPaused, setIsPaused] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -115,38 +118,24 @@ export default function CertificationsSection() {
     if (!isVisible || isPaused) return
 
     const interval = setInterval(() => {
-      // Flip all cards sequentially
-      for (let i = 0; i < 4; i++) {
-        setTimeout(() => {
-          // Start flipping
-          setIsFlipping(prev => {
-            const newFlipping = [...prev]
-            newFlipping[i] = true
-            return newFlipping
-          })
-
-          // After full flip (180deg), update indices and reset flip
-          setTimeout(() => {
-            setCurrentIndices(prev => {
-              const newIndices = [...prev]
-              newIndices[i] = (prev[i] + 4) % certifications.length
-              return newIndices
-            })
-            setNextIndices(prev => {
-              const newIndices = [...prev]
-              newIndices[i] = (prev[i] + 4) % certifications.length
-              return newIndices
-            })
-            
-            setIsFlipping(prev => {
-              const newFlipping = [...prev]
-              newFlipping[i] = false
-              return newFlipping
-            })
-          }, 600) // Full flip duration
-        }, i * 300) // Stagger the flips
-      }
-    }, 4000) // Change cards every 5 seconds
+      setCardStates(prevStates => 
+        prevStates.map(state => {
+          // If card is not flipped, flip it to show back side
+          if (!state.isFlipped) {
+            return { ...state, isFlipped: true }
+          } else {
+            // If card is flipped, update indices and flip back
+            const newFrontIndex = (state.backIndex + 4) % certifications.length
+            const newBackIndex = (newFrontIndex + 4) % certifications.length
+            return { 
+              frontIndex: newFrontIndex, 
+              backIndex: newBackIndex, 
+              isFlipped: false 
+            }
+          }
+        })
+      )
+    }, 4000) // Show each side for 4 seconds
 
     return () => clearInterval(interval)
   }, [isVisible, isPaused])
@@ -166,9 +155,9 @@ export default function CertificationsSection() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          {currentIndices.map((certIndex, i) => {
-            const currentCert = certifications[certIndex]
-            const nextCert = certifications[nextIndices[i] % certifications.length]
+          {cardStates.map((cardState, i) => {
+            const frontCert = certifications[cardState.frontIndex]
+            const backCert = certifications[cardState.backIndex]
             
             return (
               <div
@@ -187,7 +176,7 @@ export default function CertificationsSection() {
                   className="relative w-full h-full transition-transform duration-600"
                   style={{
                     transformStyle: "preserve-3d",
-                    transform: isFlipping[i] ? "rotateY(180deg)" : "rotateY(0deg)",
+                    transform: cardState.isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
                   }}
                 >
                   {/* Front of card */}
@@ -201,16 +190,16 @@ export default function CertificationsSection() {
                       <Award className="w-16 h-16 mx-auto text-primary mb-4" />
                     </div>
                     <CardHeader className="lg:pt-0 pt-6">
-                      <CardTitle className="text-center text-base">{currentCert.title}</CardTitle>
+                      <CardTitle className="text-center text-base">{frontCert.title}</CardTitle>
                       <CardDescription className="text-center text-sm">
-                        {currentCert.issuer}
+                        {frontCert.issuer}
                         <br />
-                        {currentCert.date}
+                        {frontCert.date}
                       </CardDescription>
                     </CardHeader>
                     <CardFooter className="justify-center">
                       <Button variant="secondary" size="sm" className="hover:bg-primary hover:text-primary-foreground transition-colors" asChild>
-                        <a href={currentCert.verifyLink} target="_blank" rel="noopener noreferrer">
+                        <a href={frontCert.verifyLink} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-4 h-4 mr-2" />
                           Verify
                         </a>
@@ -230,16 +219,16 @@ export default function CertificationsSection() {
                       <Award className="w-16 h-16 mx-auto text-primary mb-4" />
                     </div>
                     <CardHeader className="lg:pt-0 pt-6">
-                      <CardTitle className="text-center text-base">{nextCert.title}</CardTitle>
+                      <CardTitle className="text-center text-base">{backCert.title}</CardTitle>
                       <CardDescription className="text-center text-sm">
-                        {nextCert.issuer}
+                        {backCert.issuer}
                         <br />
-                        {nextCert.date}
+                        {backCert.date}
                       </CardDescription>
                     </CardHeader>
                     <CardFooter className="justify-center">
                       <Button variant="secondary" size="sm" className="hover:bg-primary hover:text-primary-foreground transition-colors" asChild>
-                        <a href={nextCert.verifyLink} target="_blank" rel="noopener noreferrer">
+                        <a href={backCert.verifyLink} target="_blank" rel="noopener noreferrer">
                           <ExternalLink className="w-4 h-4 mr-2" />
                           Verify
                         </a>
