@@ -138,9 +138,11 @@ export default function HeroSection() {
               >
                 View My Work
               </Button>
-              <Button size="lg" variant="outline" className="hover:text-[var(--color-devops-deploy)]">
-                Get In Touch
-              </Button>
+              <a href="https://www.linkedin.com/in/theekshana-yugan/" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="hover:text-[var(--color-devops-deploy)]">
+                  Get In Touch
+                </Button>
+              </a>
             </div>
           </div>
         </div>
