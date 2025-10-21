@@ -67,8 +67,7 @@ export default function OpenSourceSection() {
             </h2>
           </div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty">
-            Giving back to the community by contributing to projects that power modern DevOps, testing frameworks, and
-            ML infrastructure.
+            I believe in giving back to the community by contributing to the open-source projects and services I use.
           </p>
         </div>
 

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 const socials = [
   { icon: Github, label: "GitHub", href: "https://github.com/BlockAce01" },
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/theekshana-yugan/" },
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com/yugankavinda" },
+  // { icon: Twitter, label: "Twitter", href: "https://twitter.com/yugankavinda" },
   { icon: Mail, label: "Email", href: "mailto:yugankavinda@gmail.com" },
 ]
 
@@ -15,9 +15,9 @@ export default function ContactSection() {
     <section id="contact" className="py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-balance">Get In Touch</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-balance">Contact Me</h2>
           <p className="text-xl text-muted-foreground mb-12 text-pretty">
-            I'm always open to discussing DevOps, QA automation, AI/ML infrastructure, or open source collaboration
+            I'm always open to discussing DevOps, QA automation & AI/ML
             opportunities.
           </p>
 
