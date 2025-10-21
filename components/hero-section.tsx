@@ -14,6 +14,9 @@ export default function HeroSection() {
   const [displayedText, setDisplayedText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
   const [charIndex, setCharIndex] = useState(0)
+  const [scramblingChar, setScramblingChar] = useState("")
+  const [scrambleSteps, setScrambleSteps] = useState(0)
+  const scrambleIntervalRef = useRef<NodeJS.Timeout | null>(null)
   const isMobile = useIsMobile()
 
   const scrollToSection = (id: string) => {
@@ -28,18 +31,42 @@ export default function HeroSection() {
     "an AI/ML Enthusiast"
   ]
 
-  // Typewriter effect
+  // Characters for code encrypting effect
+  const codeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+
+  // Cleanup interval on unmount
+  useEffect(() => {
+    return () => {
+      if (scrambleIntervalRef.current) {
+        clearInterval(scrambleIntervalRef.current)
+      }
+    }
+  }, [])
+
+  // Code encrypting typewriter effect
   useEffect(() => {
     const currentTitle = titles[currentTitleIndex]
     
     if (isTyping) {
-      // Typing effect
       if (charIndex < currentTitle.length) {
-        const timeout = setTimeout(() => {
-          setDisplayedText(currentTitle.slice(0, charIndex + 1))
-          setCharIndex(charIndex + 1)
-        }, 100) // Typing speed
-        return () => clearTimeout(timeout)
+        if (!scrambleIntervalRef.current) {
+          scrambleIntervalRef.current = setInterval(() => {
+            setScrambleSteps(prev => {
+              if (prev < 10) {
+                const randomChar = codeChars[Math.floor(Math.random() * codeChars.length)]
+                setScramblingChar(randomChar)
+                setDisplayedText(currentTitle.slice(0, charIndex) + randomChar)
+                return prev + 1
+              } else {
+                clearInterval(scrambleIntervalRef.current!)
+                scrambleIntervalRef.current = null
+                setDisplayedText(currentTitle.slice(0, charIndex + 1))
+                setCharIndex(prevCharIndex => prevCharIndex + 1)
+                return 0
+              }
+            })
+          }, 40)
+        }
       } else {
         // Finished typing, wait before starting to delete
         const timeout = setTimeout(() => {
@@ -64,7 +91,7 @@ export default function HeroSection() {
         return () => clearTimeout(timeout)
       }
     }
-  }, [charIndex, isTyping, currentTitleIndex, titles])
+  }, [charIndex, isTyping, currentTitleIndex, titles, codeChars])
 
   // Auto-reset to default position after user interaction
   useEffect(() => {
@@ -124,7 +151,7 @@ export default function HeroSection() {
           <div className="space-y-6">
             <h1 className="text-4xl lg:text-6xl font-bold leading-tight text-balance min-h-[90px] mb-4">
               Hi, I'm{" "}
-              <span className="bg-gradient-to-r from-primary via-[var(--color-devops-flow)] to-accent bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary via-(--color-devops-flow) to-accent bg-clip-text text-transparent">
                 {displayedText}
                 <span className="animate-pulse text-primary">|</span>
               </span>
@@ -142,7 +169,7 @@ export default function HeroSection() {
                 View My Work
               </Button>
               <a href="https://www.linkedin.com/in/theekshana-yugan/" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="hover:text-[var(--color-devops-deploy)]">
+                <Button size="lg" variant="outline" className="hover:text-(--color-devops-deploy)">
                   Get In Touch
                 </Button>
               </a>
