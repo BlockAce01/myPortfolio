@@ -7,7 +7,13 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50)
+    const handleScroll = () => {
+      const heroSection = document.getElementById("home")
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight
+        setScrolled(window.scrollY > heroHeight - 100) // Trigger slightly before fully leaving hero section
+      }
+    }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -25,9 +31,39 @@ export default function Header() {
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <button
           onClick={() => scrollToSection("home")}
-          className="w-10 h-10 rounded-full p-1 bg-gradient-to-r from-primary to-accent"
+          className="w-10 h-10 rounded-full relative"
+          style={{
+            perspective: "1000px",
+          }}
         >
-          <img src="/logo.png" alt="YK Logo" className="w-full h-full rounded-full" />
+          <div
+            className="relative w-full h-full transition-transform duration-600"
+            style={{
+              transformStyle: "preserve-3d",
+              transform: scrolled ? "rotateY(180deg)" : "rotateY(0deg)",
+            }}
+          >
+            {/* Front - Logo */}
+            <div
+              className="absolute inset-0 w-full h-full rounded-full p-1 bg-gradient-to-r from-primary to-accent"
+              style={{
+                backfaceVisibility: "hidden",
+              }}
+            >
+              <img src="/logo.png" alt="YK Logo" className="w-full h-full rounded-full" />
+            </div>
+
+            {/* Back - Photo */}
+            <div
+              className="absolute inset-0 w-full h-full rounded-full p-1 bg-gradient-to-r from-accent to-primary"
+              style={{
+                backfaceVisibility: "hidden",
+                transform: "rotateY(180deg)",
+              }}
+            >
+              <img src="/logo2.jpg" alt="Your Photo" className="w-full h-full rounded-full object-cover" />
+            </div>
+          </div>
         </button>
 
         <nav className="hidden md:flex items-center gap-8">
