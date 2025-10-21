@@ -11,8 +11,15 @@ export default function Header() {
     const handleScroll = () => {
       const heroSection = document.getElementById("home")
       if (heroSection) {
-        const heroHeight = heroSection.offsetHeight
-        setScrolled(window.scrollY > heroHeight - 100) // Trigger slightly before fully leaving hero section
+        const targetElement = heroSection.querySelector(".space-y-6")
+        if (targetElement) {
+          const threshold = 100 // Adjust this value as needed
+          const targetTop = targetElement.getBoundingClientRect().top + window.scrollY - threshold
+          const scrollPosition = window.scrollY
+
+          // Activate navbar when reaching the `space-y-6` area with threshold
+          setScrolled(scrollPosition >= targetTop)
+        }
       }
     }
     window.addEventListener("scroll", handleScroll)
