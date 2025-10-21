@@ -33,7 +33,7 @@ const projects = [
   {
     title: "Examind - Learning & Competitive platform for Sri Lankan A/L Students",
     description: "Examind brings students, teachers, and administrators together in a collaborative environment with AI-powered assistance, gamification, and discussion forums. Specially designed to support Sri Lankan Advanced Level (A/L) students in their academic journey. ",
-    image: "projects/Examind - Learning & Competitive platform for Sri Lankan AL Students.png",
+    image: "projects/Examind.png",
     tags: ["React", "Node.js", "PostgreSQL", "n8n", "Docker", "TeamWork"],
     demo: "https://www.linkedin.com/posts/theekshana-yugan_webdevelopment-fullstack-reactjs-activity-7381017968094339073-pUa6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD2FB5wBHtOLIS0Ivzd1SkK38D0o-RxVWo4",
     source: "https://github.com/BlockAce01/Examind",
