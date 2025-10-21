@@ -135,7 +135,7 @@ export default function CertificationsSection() {
           }
         })
       )
-    }, 4000) // Show each side for 4 seconds
+    }, 3000) // Show each side for 3 seconds
 
     return () => clearInterval(interval)
   }, [isVisible, isPaused])
