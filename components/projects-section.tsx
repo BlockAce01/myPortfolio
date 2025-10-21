@@ -62,6 +62,14 @@ const projects = [
     demo: "https://black-mirror-fanmade-tyk.netlify.app/",
     source: "https://github.com/BlockAce01/Black-Mirror-Web",
   },
+  {
+    title: "AR Digital Poson Kalapaya",
+    description: "🛠️ With the power of Blender for 3D modeling and animation, Zappar's Mattercraft for AR deployment, and VPS(Visual Positioning System) maps of Immersal, we recreated the serenity of Poson in an immersive digital space.",
+    image: "projects/AR Digital Poson Kalapaya.png",
+    tags: ["Blender", "Zappar", "Immersal", "TeamWork" ,"Augmented Reality"],
+    demo: "https://www.linkedin.com/posts/theekshana-yugan_ardigitalkalapaya-posonar-3dmodeling-activity-7339114066960859137-XGec?utm_source=share&utm_medium=member_desktop&rcm=ACoAAD2FB5wBHtOLIS0Ivzd1SkK38D0o-RxVWo4",
+    source: "#",
+  },
 ]
 
 export default function ProjectsSection() {
