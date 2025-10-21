@@ -1,6 +1,6 @@
 "use client"
 
-import { Github, Linkedin, Twitter, Mail } from "lucide-react"
+import { Github, Linkedin, Twitter, Mail, Download } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const socials = [
@@ -8,6 +8,11 @@ const socials = [
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/theekshana-yugan/" },
   // { icon: Twitter, label: "Twitter", href: "https://twitter.com/yugankavinda" },
   { icon: Mail, label: "Email", href: "mailto:yugankavinda@gmail.com" },
+]
+
+const cvDownloads = [
+  { label: "QA Engineer CV", href: "CV/Yugan Kavinda-QA Intern-CV.pdf" },
+  { label: "DevOps Engineer CV", href: "CV/Yugan Kavinda-DevOps Intern-CV.pdf" },
 ]
 
 export default function ContactSection() {
@@ -20,6 +25,29 @@ export default function ContactSection() {
             I'm always open to discussing DevOps, QA automation & AI/ML
             opportunities.
           </p>
+
+          <div className="flex flex-wrap justify-center gap-4 mb-8">
+            {cvDownloads.map((cv, index) => {
+              const colors = [
+                'hover:text-[var(--color-devops-qa)] hover:bg-[var(--color-devops-qa)]/10',
+                'hover:text-[var(--color-devops-deploy)] hover:bg-[var(--color-devops-deploy)]/10'
+              ]
+              return (
+                <Button
+                  key={index}
+                  variant="outline"
+                  size="lg"
+                  className={`hover:scale-110 transition-all duration-300 bg-transparent border-2 ${colors[index]}`}
+                  asChild
+                >
+                  <a href={cv.href} download aria-label={`Download ${cv.label}`}>
+                    <Download className="w-6 h-6 mr-2" />
+                    {cv.label}
+                  </a>
+                </Button>
+              )
+            })}
+          </div>
 
           <div className="flex flex-wrap justify-center gap-4">
             {socials.map((social, index) => {
@@ -34,11 +62,11 @@ export default function ContactSection() {
                   key={index}
                   variant="outline"
                   size="lg"
-                  className={`hover:scale-110 transition-all duration-300 bg-transparent border-2 ${colors[index]}`}
+                  className={`hover:scale-110 transition-all duration-300 bg-transparent border-2 h-10 w-10 md:h-20 md:w-20 ${colors[index]}`}
                   asChild
                 >
                   <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
-                    <social.icon className="w-6 h-6" />
+                    <social.icon className="size-8 md:size-12" />
                   </a>
                 </Button>
               )
