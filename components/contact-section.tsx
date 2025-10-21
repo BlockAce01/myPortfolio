@@ -71,7 +71,7 @@ export default function ContactSection() {
                   asChild
                 >
                   <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label}>
-                    <social.icon className="size-8 md:size-12" />
+                    <social.icon className="size-7 md:size-12" />
                   </a>
                 </Button>
               )

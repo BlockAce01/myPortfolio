@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Briefcase } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Briefcase, ChevronDown, ChevronUp } from "lucide-react"
 
 const experience = [
   {
@@ -28,7 +29,15 @@ const experience = [
 
 export default function ExperienceSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({})
   const sectionRef = useRef<HTMLElement>(null)
+
+  const toggleExpand = (index: number) => {
+    setExpandedItems(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }))
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -87,31 +96,52 @@ export default function ExperienceSection() {
                       </span>
                     </div>
                   </div>
-                  <div className="text-sm font-semibold text-primary whitespace-nowrap">{item.duration}</div>
+                  <div className="flex items-center gap-2">
+                    <div className="text-sm font-semibold text-primary whitespace-nowrap">{item.duration}</div>
+                    
+                    {/* Mobile toggle button */}
+                    <div className="md:hidden">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => toggleExpand(index)}
+                        className="flex items-center p-1"
+                      >
+                        {expandedItems[index] ? (
+                          <ChevronUp className="w-4 h-4" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4" />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">{item.description}</p>
-                <div className="grid md:grid-cols-1 gap-4 mb-4">
-                  {/* <div>
-                    <h4 className="font-semibold mb-2 text-sm">Key Achievements:</h4>
-                    <ul className="space-y-1">
-                      {item.achievements.map((achievement, i) => (
-                        <li key={i} className="text-sm text-muted-foreground flex items-center gap-2">
-                          <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
-                          {achievement}
-                        </li>
-                      ))}
-                    </ul>
-                  </div> */}
-                  <div>
-                    <h4 className="font-semibold mb-2 text-sm">Skills:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {item.tags.map((tag, i) => (
-                        <Badge key={i} variant="secondary">
-                          {tag}
-                        </Badge>
-                      ))}
+                {/* Details section - hidden on mobile by default, always visible on desktop */}
+                <div className={`${expandedItems[index] ? 'block' : 'hidden'} md:block`}>
+                  <p className="text-muted-foreground mb-4">{item.description}</p>
+                  <div className="grid md:grid-cols-1 gap-4 mb-4">
+                    {/* <div>
+                      <h4 className="font-semibold mb-2 text-sm">Key Achievements:</h4>
+                      <ul className="space-y-1">
+                        {item.achievements.map((achievement, i) => (
+                          <li key={i} className="text-sm text-muted-foreground flex items-center gap-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                            {achievement}
+                          </li>
+                        ))}
+                      </ul>
+                    </div> */}
+                    <div>
+                      <h4 className="font-semibold mb-2 text-sm">Skills:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {item.tags.map((tag, i) => (
+                          <Badge key={i} variant="secondary">
+                            {tag}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>

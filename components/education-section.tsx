@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { GraduationCap } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { GraduationCap, ChevronDown, ChevronUp } from "lucide-react"
 
 const education = [
   {
@@ -19,7 +20,15 @@ const education = [
 
 export default function EducationSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [expandedItems, setExpandedItems] = useState<Record<number, boolean>>({})
   const sectionRef = useRef<HTMLElement>(null)
+
+  const toggleExpand = (index: number) => {
+    setExpandedItems(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }))
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,12 +79,32 @@ export default function EducationSection() {
                     <CardTitle className="text-2xl mb-2">{item.degree}</CardTitle>
                     <CardDescription className="text-base">{item.institution}</CardDescription>
                   </div>
-                  <div className="text-sm font-semibold text-primary whitespace-nowrap">{item.duration}</div>
+                  <div className="flex items-center gap-2">
+                    <div className="text-sm font-semibold text-primary whitespace-nowrap">{item.duration}</div>
+                    
+                    {/* Mobile toggle button */}
+                    <div className="md:hidden">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => toggleExpand(index)}
+                        className="flex items-center p-1"
+                      >
+                        {expandedItems[index] ? (
+                          <ChevronUp className="w-4 h-4" />
+                        ) : (
+                          <ChevronDown className="w-4 h-4" />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </CardHeader>
               <CardContent>
                 {/* <p className="text-muted-foreground mb-4">{item.description}</p> */}
-                <div className="grid md:grid-cols-2 gap-4 mb-4">
+                
+                {/* Details section - hidden on mobile by default, always visible on desktop */}
+                <div className={`grid md:grid-cols-2 gap-4 mb-4 ${expandedItems[index] ? 'block' : 'hidden'} md:grid`}>
                   <div>
                     <h4 className="font-semibold mb-2 text-sm">Achievements:</h4>
                     <ul className="space-y-1">

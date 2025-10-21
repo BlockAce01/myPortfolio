@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github } from "lucide-react"
+import { ExternalLink, Github, ChevronDown, ChevronUp } from "lucide-react"
 
 const projects = [
   {
@@ -74,7 +74,15 @@ const projects = [
 
 export default function ProjectsSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [expandedProjects, setExpandedProjects] = useState<Record<number, boolean>>({})
   const sectionRef = useRef<HTMLElement>(null)
+
+  const toggleExpand = (index: number) => {
+    setExpandedProjects(prev => ({
+      ...prev,
+      [index]: !prev[index]
+    }))
+  }
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -124,11 +132,34 @@ export default function ProjectsSection() {
                 />
               </div>
               <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription>{project.description}</CardDescription>
+                <div className="flex items-center justify-between">
+                  <CardTitle className="flex-1">{project.title}</CardTitle>
+                  
+                  {/* Mobile toggle button */}
+                  <div className="md:hidden">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => toggleExpand(index)}
+                      className="flex items-center p-1"
+                    >
+                      {expandedProjects[index] ? (
+                        <ChevronUp className="w-4 h-4" />
+                      ) : (
+                        <ChevronDown className="w-4 h-4" />
+                      )}
+                    </Button>
+                  </div>
+                </div>
+                
+                {/* Description - hidden on mobile by default, always visible on desktop */}
+                <CardDescription className={`${expandedProjects[index] ? 'block' : 'hidden'} md:block`}>
+                  {project.description}
+                </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="flex flex-wrap gap-2">
+                {/* Tags - hidden on mobile by default, always visible on desktop */}
+                <div className={`flex flex-wrap gap-2 ${expandedProjects[index] ? 'flex' : 'hidden'} md:flex`}>
                   {project.tags.map((tag, i) => (
                     <Badge key={i} variant="secondary">
                       {tag}
