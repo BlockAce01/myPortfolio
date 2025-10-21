@@ -38,12 +38,6 @@ export default function Header() {
             About
           </button>
           <button
-            onClick={() => scrollToSection("devops")}
-            className="text-sm font-medium hover:text-[var(--color-devops-deploy)] transition-colors"
-          >
-            DevOps
-          </button>
-          <button
             onClick={() => scrollToSection("opensource")}
             className="text-sm font-medium hover:text-[var(--color-devops-flow)] transition-colors"
           >

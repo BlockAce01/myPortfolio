@@ -5,6 +5,8 @@ import AboutSection from "@/components/about-section"
 import DevOpsSection from "@/components/devops-section"
 import OpenSourceSection from "@/components/opensource-section"
 import ProjectsSection from "@/components/projects-section"
+import EducationSection from "@/components/education-section"
+import ExperienceSection from "@/components/experience-section"
 import CertificationsSection from "@/components/certifications-section"
 import ContactSection from "@/components/contact-section"
 import Footer from "@/components/footer"
@@ -24,11 +26,13 @@ export default function Portfolio() {
         <main>
           <HeroSection />
           <AboutSection />
+          <EducationSection />
+          <ExperienceSection />
           <DevOpsSection />
           <OpenSourceSection />
           <ProjectsSection />
-          <CertificationsSection />
           <ContactSection />
+          <CertificationsSection />
         </main>
         <Footer />
       </div>
