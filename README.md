@@ -163,7 +163,9 @@ The app can be deployed to any platform that supports Next.js:
 
 ## 📄 License
 
-This project is private and proprietary.
+This project is licensed under the CC0 1.0 Universal (CC0 1.0) Public Domain Dedication.
+
+[![CC0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)
 
 ## 📞 Contact
 
