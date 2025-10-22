@@ -69,7 +69,7 @@ export default function Header() {
                 transform: "rotateY(180deg)",
               }}
             >
-              <img src="/logo2.jpg" alt="Your Photo" className="w-full h-full rounded-full object-cover" />
+              <img src="/me.jpg" alt="Your Photo" className="w-full h-full rounded-full object-cover" />
             </div>
           </div>
         </button>
