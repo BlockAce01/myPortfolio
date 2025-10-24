@@ -1,6 +1,6 @@
 # Yugan Kavinda Portfolio
 
-A modern, interactive **Single Page Application (SPA)** portfolio website showcasing my journey as a QA Engineer, DevOps Engineer, and AI/ML Enthusiast. Built with Next.js, TypeScript, and featuring stunning 3D animations.
+A modern, interactive **Single Page Application (SPA)** portfolio website showcasing my journey as a QA Engineer, DevOps Engineer, and AI/ML Enthusiast. Built with Next.js, TypeScript, Three.js, and featuring stunning 3D animations.
 
 ## 🌐 Live Demo
 
@@ -167,6 +167,8 @@ This project is licensed under the CC0 1.0 Universal (CC0 1.0) Public Domain Ded
 
 [![CC0](https://licensebuttons.net/l/zero/1.0/80x15.png)](http://creativecommons.org/publicdomain/zero/1.0/)
 
+[View full license text](./LICENSE)
+
 ## 📞 Contact
 
 **Yugan Kavinda**
@@ -176,4 +178,4 @@ This project is licensed under the CC0 1.0 Universal (CC0 1.0) Public Domain Ded
 
 ---
 
-Built with ❤️ using Next.js and TypeScript
+Built by using Next.js and TypeScript
