@@ -6,7 +6,7 @@ A modern, interactive **Single Page Application (SPA)** portfolio website showca
 
 [View Live Portfolio](https://www.yugankavinda.me/)
 
-![Portfolio Preview](./public/preview1.png)
+![Portfolio Preview](./public/preview.png)
 
 ## 🚀 Features
 
