@@ -48,7 +48,7 @@ export default function DragonInfinity({ isDark }: DragonInfinityProps) {
       // Cloud Platforms
       { name: 'AWS', image: '/icons/aws.png', position: 5, radius: baseRadius * 0.95, color: '#FF9900' },
       { name: 'Azure', image: '/icons/azure.png', position: 6, radius: baseRadius * 0.88, color: '#0078D4' },
-      { name: 'GCP', image: '/icons/gcp.png', position: 7, radius: baseRadius * 1.0, color: '#4285F4' },
+      { name: 'Oracle', image: '/icons/oracle.png', position: 7, radius: baseRadius * 1.0, color: '#4285F4' },
       
       // Testing Tools
       { name: 'Selenium', image: '/icons/selenium.png', position: 8, radius: baseRadius * 0.75, color: '#43B02A' },
