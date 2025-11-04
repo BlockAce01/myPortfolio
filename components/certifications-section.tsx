@@ -25,6 +25,12 @@ const certifications = [
     verifyLink: "https://open.uom.lk/verify?code=FR5wKK8nnp&qrcode=1",
   },
   {
+    title: "Oracle Cloud Infrastructure 2025 Certified Foundations Associate",
+    issuer: "Oracle",
+    date: "October 2025",
+    verifyLink: "https://catalog-education.oracle.com/ords/certview/sharebadge?id=47AAD0CCFAC57E2D58716F7A1A15FF10B37DBE89F308B7A3B460A3471A6411A3",
+  },
+  {
     title: "Cloud Computing For Absolute Beginners",
     issuer: "CoDeKu DevOps Academy",
     date: "August 2025",
