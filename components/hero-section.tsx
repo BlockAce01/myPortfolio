@@ -4,7 +4,7 @@ import { useRef, useEffect, useState } from "react"
 import { Canvas } from "@react-three/fiber"
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei"
 import { Button } from "@/components/ui/button"
-import DragonInfinity from "./dragon-infinity"
+import DragonInfinity from "./logos-spiral"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function HeroSection() {

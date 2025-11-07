@@ -134,7 +134,7 @@ Update the following files to customize the portfolio:
 
 ### 3D Model
 
-The dragon infinity model is located in `components/dragon-infinity.tsx`. You can replace it with your own 3D model or modify the existing one.
+The dragon infinity model is located in `components/logos-spiral.tsx`. You can replace it with your own 3D model or modify the existing one.
 
 ## 🌐 Deployment
 
