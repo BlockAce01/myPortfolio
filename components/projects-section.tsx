@@ -11,7 +11,7 @@ const projects = [
     title: "MyBlog - Full stack Deployment",
     description: "This isn't just another blogging platform; it's a testament to building a modern, secure, and scalable full-stack application using cutting-edge technologies and best-in-class DevOps practices.",
     image: "projects/MyBlog - Full stack Deployment.png",
-    tags: ["DevOps", "Docker", "AWS", "CI/CD", "MERN Stack"],
+    tags: ["DevOps", "Docker", "AWS", "CI/CD", "MERN", "Terraform", "Nginx", "Redis"],
     demo: "https://blog.yugankavinda.me/post/my-blog-a-full-stack-journey-with-mern-and-devops-practices",
     source: "https://github.com/BlockAce01/MyBlog",
   },
