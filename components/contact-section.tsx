@@ -13,6 +13,7 @@ const socials = [
 const cvDownloads = [
   { label: "QA Engineer CV", href: "CV/Yugan Kavinda-QA Intern-CV.pdf" },
   { label: "DevOps Engineer CV", href: "CV/Yugan Kavinda-DevOps Intern-CV.pdf" },
+  { label: "Software Engineer CV", href: "CV/Yugan Kavinda-SE Intern-CV.pdf" },
 ]
 
 export default function ContactSection() {
@@ -35,7 +36,8 @@ export default function ContactSection() {
             {cvDownloads.map((cv, index) => {
               const colors = [
                 'hover:text-[var(--color-devops-qa)] hover:bg-[var(--color-devops-qa)]/10',
-                'hover:text-[var(--color-devops-deploy)] hover:bg-[var(--color-devops-deploy)]/10'
+                'hover:text-[var(--color-devops-deploy)] hover:bg-[var(--color-devops-deploy)]/10',
+                'hover:text-[var(--color-devops-flow)] hover:bg-[var(--color-devops-flow)]/10'
               ]
               return (
                 <Button
