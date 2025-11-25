@@ -95,6 +95,8 @@ const aimlStages = [
 
 export default function DevOpsSection() {
   const [isVisible, setIsVisible] = useState(false)
+  const [currentHighlight, setCurrentHighlight] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -113,6 +115,16 @@ export default function DevOpsSection() {
 
     return () => observer.disconnect()
   }, [])
+
+  useEffect(() => {
+    if (!isVisible || isPaused) return
+
+    const interval = setInterval(() => {
+      setCurrentHighlight((prev) => (prev + 1) % devopsStages.length)
+    }, 1000) // 1 second per wave step
+
+    return () => clearInterval(interval)
+  }, [isVisible, isPaused])
 
   return (
     <section id="devops" ref={sectionRef} className="py-20 relative overflow-hidden">
@@ -147,37 +159,60 @@ export default function DevOpsSection() {
           </div> */}
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {devopsStages.map((stage, index) => (
-              <Card
-                key={index}
-                className={`transition-all duration-500 hover:scale-105 hover:shadow-lg ${
-                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                } ${stage.highlight ? "border-2 border-primary shadow-lg shadow-primary/20" : ""}`}
-                style={{ transitionDelay: `${index * 100}ms` }}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-lg ${stage.highlight ? "bg-primary/10" : "bg-secondary"}`}>
-                      <stage.icon className={`w-6 h-6 ${stage.color}`} />
+            {devopsStages.map((stage, index) => {
+              const wavePosition = (index - currentHighlight + devopsStages.length) % devopsStages.length
+              const isInWave = wavePosition <= 2
+              const waveIntensity = isInWave ? 3 - wavePosition : 0
+
+              let waveClass = ""
+              if (waveIntensity === 3) {
+                waveClass = "border-2 border-primary shadow-lg shadow-primary/20 bg-gradient-to-br from-primary/5 to-accent/5"
+              } else if (waveIntensity === 2) {
+                waveClass = "border border-primary/50 shadow-md shadow-primary/10 bg-gradient-to-br from-primary/3 to-accent/3"
+              } else if (waveIntensity === 1) {
+                waveClass = "border border-primary/30 shadow-sm shadow-primary/5"
+              }
+
+              const cardClasses = `transition-all duration-700 hover:shadow-xl hover:border-primary hover:bg-gradient-to-br hover:from-primary/10 hover:to-accent/10 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              } ${waveClass}`
+
+              let iconBgClasses = "bg-secondary"
+              if (waveIntensity === 3) {
+                iconBgClasses = "bg-primary/10"
+              } else if (waveIntensity === 2) {
+                iconBgClasses = "bg-primary/5"
+              } else if (waveIntensity === 1) {
+                iconBgClasses = "bg-primary/3"
+              }
+
+              return (
+                <Card
+                  key={index}
+                  className={cardClasses}
+                  style={{ transitionDelay: `${index * 100}ms` }}
+                  onMouseEnter={() => setIsPaused(true)}
+                  onMouseLeave={() => setIsPaused(false)}
+                >
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-4">
+                      <div className={`p-3 rounded-lg ${iconBgClasses}`}>
+                        <stage.icon className={`w-6 h-6 ${stage.color}`} />
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold mb-2">
+                          {stage.title}
+                        </h4>
+                        <p className="text-sm text-muted-foreground">{stage.description}</p>
+                      </div>
                     </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold mb-2 flex items-center gap-2">
-                        {stage.title}
-                        {stage.highlight && (
-                          <Badge variant="default" className="text-xs">
-                            Focus
-                          </Badge>
-                        )}
-                      </h4>
-                      <p className="text-sm text-muted-foreground">{stage.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+                  </CardContent>
+                </Card>
+              )
+            })}
           </div>
         </div>
-        
+
 
         {/* Key Insight */}
         <div className="mt-12 text-center">
